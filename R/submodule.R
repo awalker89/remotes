@@ -88,6 +88,7 @@ update_submodules <- function(source, quiet) {
   file <- file.path(source, ".gitmodules")
   if (!file.exists(file)) {
     file <- file.path(file.path(source, ".."), ".gitmodules")
+    source <- file.path(source, "..")
     if (!file.exists(file)) {
       return()
     }
