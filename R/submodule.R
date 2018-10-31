@@ -87,7 +87,10 @@ update_submodule <- function(url, path, branch, quiet) {
 update_submodules <- function(source, quiet) {
   file <- file.path(source, ".gitmodules")
   if (!file.exists(file)) {
-    return()
+    file <- file.path(file.path(source, ".."), ".gitmodules")
+    if (!file.exists(file)) {
+      return()
+    }
   }
   info <- parse_submodules(file)
 
